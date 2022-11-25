@@ -33,8 +33,10 @@ private:
 private slots:
     void fillTable();
     void createWarehouse();
+    void saveWarehouse();
     void saveCurrentWarehouse();
     void showBasicAttributes();
+    void currentEdit();
     void setCurrentWarehouse(int row, int column);
 };
 #endif // MAINWINDOW_H

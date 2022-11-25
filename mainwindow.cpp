@@ -28,9 +28,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->cargo, SIGNAL(clicked()), this, SLOT(showBasicAttributes()));
     connect(ui->passenger, SIGNAL(clicked()), this, SLOT(showBasicAttributes()));
     // -------
-
-
-
+    connect(ui->Save, SIGNAL(clicked()), this, SLOT(saveWarehouse()));
+    connect(ui->edit, SIGNAL(clicked()), this, SLOT(currentEdit()));
 
     ui->engineCapacity->setMaximum(30);              // Прописываем ограничения
     ui->engineCapacity->setMinimum(0.5);
@@ -96,6 +95,15 @@ void MainWindow::fillTable(){
 
 }
 
+void MainWindow::currentEdit(){
+    ui->Save->setEnabled(true);
+
+}
+
+void MainWindow::saveWarehouse(){
+    saveCurrentWarehouse();
+    fillTable();
+}
 
 void MainWindow::saveCurrentWarehouse(){                     // Обработка кнопки "Сохранить 1 запись"
 
@@ -149,7 +157,6 @@ void MainWindow::createWarehouse(){
     countWarehouse++;
     saveCurrentWarehouse();
     fillTable();
-
 }
 
 void MainWindow::setCurrentWarehouse(int row, int column)
